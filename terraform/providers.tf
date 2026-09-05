@@ -6,13 +6,18 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "internship-tracker-tfstate-akram"
-    key            = "global/terraform.tfstate"
-    region         = "eu-west-3"
-    use_lockfile   = true
+    bucket       = "internship-tracker-tfstate-akram"
+    key          = "global/terraform.tfstate"
+    region       = "eu-west-3"
+    use_lockfile = true
   }
 }
 
 provider "aws" {
   region = "eu-west-3"
+  default_tags {
+    tags = {
+      Project = "internship-tracker"
+    }
+  }
 }
